@@ -1,0 +1,100 @@
+<html>
+<h1>javascript事件学习</h1>
+<input id="name" type='txt' width="100px" height="60px">
+<button id="tijiao" onclick="tijiao()">提交</button>
+<br/>
+
+<h6>输入颜色改变input背景色</h6>
+<input id="yanse" type='txt' width="100px" height="60px">
+<button id="tijiao" onclick="bianse()">提交</button>
+<br/>
+<br/>
+
+
+<input type="txt" id="songname" width="100px" height="60px" placeholder="歌曲名称" value="海阔天空" />
+<input type="txt" id="singer" width="50px" height="60px" placeholder="歌手" value="信乐团" />
+<input type="txt" id="songtime" width="50px" height="60px" placeholder="时长" value="04:39" />
+<button id="search" onclick="search()">搜索</button>
+
+<script>
+//搜索歌曲
+function search(){
+const sname = document.getElementById('songname').value;
+const singer = document.getElementById('singer').value;
+//console.log(sname);
+const songtime  = document.getElementById('songtime').value;
+//const url = 'http://lyrics.kugou.com/search?ver=1&man=yes&client=pc&keyword=';
+//把歌曲时间转换为毫秒
+//用户输入的格式是2:30
+const timesplit = songtime.split(':');//返回数组
+//console.log(timesplit);
+const stime =(timesplit[0]*60+timesplit[1])*1000;
+console.log(stime);
+const songmeta = 'http://lyrics.kugou.com/search?ver=1&man=yes&client=pc&keyword='+sname+'-'+singer+'&duration='+stime+'&hash=';
+const songs = async() =>{
+const res = await fetch(songmeta);
+const json = await res.json();
+console.log(json);
+}
+
+}
+//console.log(songres);
+//const songjson = postMessage(songmeta);
+
+//console.log(songjson);
+
+
+//const songstr = (songmeta);//json数据转换为数组
+
+//console.log(songstr)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//获取input的值，并alert
+function tijiao(){
+let name = document.getElementById('name').value;
+alert('你输入的是'+name);
+}
+//改变input的颜色
+function bianse(){
+let yanse= document.getElementById('yanse').value;
+if(!yanse==""){
+document.getElementById('yanse').style.backgroundColor=yanse;
+document.getElementById('yanse').style.marginTop='40px';
+//这里要注意的是background-color，在js中需要全部转变为驼峰写法，比如margin-top，在js中也就变成了
+//marginTop.
+}
+else alert('没有输入要变的颜色');
+}
+
+
+
+</script>
+<style>
+input{
+height:30px;
+}
+#songname{
+width:140px;
+}
+#singer,#songtime{
+width:70px;
+}
+</style>
+</html>
