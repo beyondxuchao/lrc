@@ -1,100 +1,175 @@
 <html>
-<h1>javascript事件学习</h1>
-<input id="name" type='txt' width="100px" height="60px">
-<button id="tijiao" onclick="tijiao()">提交</button>
-<br/>
+    <header>
+        <script>
+            //for循环
+            //let count = 10; for (let i = 0; i < count; i++) {   document.write(i); }
+            
+        </script>
+        <style>
+           .ant-layout{
+                display: -ms-flexbox;
+    display: flex;
+    -ms-flex: auto;
+    flex: auto;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-height: 0;
+    background: #f0f2f5;
 
-<h6>输入颜色改变input背景色</h6>
-<input id="yanse" type='txt' width="100px" height="60px">
-<button id="tijiao" onclick="bianse()">提交</button>
-<br/>
-<br/>
-
-
-<input type="txt" id="songname" width="100px" height="60px" placeholder="歌曲名称" value="海阔天空" />
-<input type="txt" id="singer" width="50px" height="60px" placeholder="歌手" value="信乐团" />
-<input type="txt" id="songtime" width="50px" height="60px" placeholder="时长" value="04:39" />
-<button id="search" onclick="search()">搜索</button>
-
-<script>
-//搜索歌曲
-function search(){
-const sname = document.getElementById('songname').value;
-const singer = document.getElementById('singer').value;
-//console.log(sname);
-const songtime  = document.getElementById('songtime').value;
-//const url = 'http://lyrics.kugou.com/search?ver=1&man=yes&client=pc&keyword=';
-//把歌曲时间转换为毫秒
-//用户输入的格式是2:30
-const timesplit = songtime.split(':');//返回数组
-//console.log(timesplit);
-const stime =(timesplit[0]*60+timesplit[1])*1000;
-console.log(stime);
-const songmeta = 'http://lyrics.kugou.com/search?ver=1&man=yes&client=pc&keyword='+sname+'-'+singer+'&duration='+stime+'&hash=';
-const songs = async() =>{
-const res = await fetch(songmeta);
-const json = await res.json();
-console.log(json);
+            }
+            .app-header-container{
+                width: 100%;
+    background: #fff;
+    box-shadow: 0 2px 6px 0 rgba(0,0,0,.12)!important;
+    height: 64px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
+            }
+            .app-header-container .menu-container {
+    margin-left: 13px;
+    display: flex;
+    width: 48px;
+    height: 48px;
+    font-size: 22px;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 50%;
+}
+.app-header-container .menu-icon {
+    margin: auto;
+    width: 20px;
+    height: 20px;
+    background-image: url(data:image/png;base64,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);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.app-header-container .brand {
+    color: #000;
+    margin-left: 10px;
+    font-weight: 600;
+    font-size: 18px;
+    font-family: Avenir,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
 }
 
+.header-right-userInfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
 }
-//console.log(songres);
-//const songjson = postMessage(songmeta);
+.txtnews{
+    border: #000 1px;
+    margin-right: 20px;
+    min-width: 90px;
+    line-height: 30px;
 
-//console.log(songjson);
-
-
-//const songstr = (songmeta);//json数据转换为数组
-
-//console.log(songstr)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//获取input的值，并alert
-function tijiao(){
-let name = document.getElementById('name').value;
-alert('你输入的是'+name);
 }
-//改变input的颜色
-function bianse(){
-let yanse= document.getElementById('yanse').value;
-if(!yanse==""){
-document.getElementById('yanse').style.backgroundColor=yanse;
-document.getElementById('yanse').style.marginTop='40px';
-//这里要注意的是background-color，在js中需要全部转变为驼峰写法，比如margin-top，在js中也就变成了
-//marginTop.
+.touxiang{
+    margin: 0;
+    padding: 0;
+    color: rgba(0,0,0,.65);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5;
+    list-style: none;
+    -webkit-font-feature-settings: "tnum";
+    font-feature-settings: "tnum","tnum";
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    color: #fff;
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: middle;
+    background: #ccc;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 50%;
 }
-else alert('没有输入要变的颜色');
+.touxiang img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
 }
 
+.app-sider{    overflow: auto;
+    background: rgb(255, 255, 255);
+    flex: 0 0 200px;
+    max-width: 200px;
+    min-width: 200px;
+    width: 200px;}
+    .content{
+        width: 100%;
+    height: calc(100vh - 64px);
+    overflow: scroll;
+    box-sizing: border-box;
+
+    }
+    .app-content{
+        background-color: rgb(255, 255, 255);
+    padding: 24px;
+    margin: 10px;
+    min-height: calc(100vh - 84px);
+    flex: auto;
 
 
-</script>
-<style>
-input{
-height:30px;
-}
-#songname{
-width:140px;
-}
-#singer,#songtime{
-width:70px;
-}
-</style>
+    }
+    .page-container{
+        display: flex;
+    flex-direction: column;
+
+        
+    }
+
+
+        </style>
+
+    </header>
+<body>
+    <section class="ant-layout">
+
+   <div class="app-header-container">
+    <div class="menu-container"><div class="menu-icon"></div></div>
+    <div class="brand">Open Platform</div>
+    <div style="flex: 1 1 0%;"></div><!--flex这个地方待学习-->
+
+    <div class="header-right-userInfo">
+        <div class="txtnews">文字信息</div>
+        <div class="avator">
+            <span class="touxiang">
+                <img src="https://p16.resso.me/img/tos-alisg-i-0000/2826445e27ad4b51a2673e79178743e2~tplv-crop-center:200:200.jpg">
+            </span>
+        </div>
+    </div><!-- 头部右侧内容-->
+   </div> <!-- 头部 app-header-container 结束-->
+
+   <section class="ant-layout ant-layout-has-sider">
+    <aside class="app-sider ant-layout-sider ant-layout-sider-dark">
+
+    </aside><!---边栏-->
+    <div class="content">
+        <main class="app-content ant-layout-content">
+            <div class="page-container">
+
+            </div>
+
+        </main>
+    </div>
+   </section>
+
+
+</section>
+
+
+
+
+
+</body>
 </html>
