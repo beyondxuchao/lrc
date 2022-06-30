@@ -99,6 +99,11 @@
     object-fit: cover;
 }
 
+.ant-layout.ant-layout-has-sider {
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
 .app-sider{    overflow: auto;
     background: rgb(255, 255, 255);
     flex: 0 0 200px;
@@ -106,14 +111,16 @@
     min-width: 200px;
     width: 200px;}
     .content{
-        width: 100%;
+    width: 100%;
     height: calc(100vh - 64px);
     overflow: scroll;
     box-sizing: border-box;
+    display: flex
 
     }
+
     .app-content{
-        background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
     padding: 24px;
     margin: 10px;
     min-height: calc(100vh - 84px);
@@ -122,11 +129,13 @@
 
     }
     .page-container{
-        display: flex;
+   
     flex-direction: column;
 
         
     }
+  
+  
 
 
         </style>
