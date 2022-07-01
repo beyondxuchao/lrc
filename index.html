@@ -6,6 +6,9 @@
             
         </script>
         <style>
+            ::-webkit-scrollbar {
+
+display: none; /* Chrome Safari */}
             html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -154,12 +157,30 @@ time, mark, audio, video {
         margin-top: 4px;
 
     }
+    .sider-menu-boss1:hover{
+
+        color:#1890ff
+    }
+
+    .anticon{
+        min-width: 14px;
+    margin-right: 10px;
+    font-size: 14px;
+    display: inline-block;
+    color: inherit;
+    font-style: normal;
+    line-height: 0;
+    text-align: center;
+    text-transform: none;
+    vertical-align: -.125em;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    }
     .sider-menu-boss{
         margin-bottom: 4px;
     padding: 0 16px;
     overflow: hidden;
     font-size: 14px;
-    height: 40px;
     line-height: 40px;
     }
     .ant-menu-item{
@@ -167,9 +188,18 @@ time, mark, audio, video {
         height: 40px;
     line-height: 40px;
     list-style-position: inside;
-    list-style-type: disc;
+    list-style: none;
 }
-    
+
+.ant-menu-item a:hover{
+
+color:#1890ff
+}
+.ant-menu-item a{
+    text-decoration: none;
+display: block;
+    color: rgba(0,0,0,.65);
+}
     .app-content{
     background-color: rgb(255, 255, 255);
     padding: 24px;
@@ -215,7 +245,10 @@ time, mark, audio, video {
      <ul class="sider-menu">
         <li>
 
-        <div class="sider-menu-boss1 sider-menu-boss"><span>菜单栏</span></div>
+        <div class="sider-menu-boss1 sider-menu-boss"><i class="anticon anticon-table"><svg viewBox="64 64 896 896" focusable="false" class="" data-icon="table" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M928 160H96c-17.7 0-32 14.3-32 32v640c0 17.7 14.3 32 32 32h832c17.7 0 32-14.3 32-32V192c0-17.7-14.3-32-32-32zm-40 208H676V232h212v136zm0 224H676V432h212v160zM412 432h200v160H412V432zm200-64H412V232h200v136zm-476 64h212v160H136V432zm0-200h212v136H136V232zm0 424h212v136H136V656zm276 0h200v136H412V656zm476 136H676V656h212v136z"></path></svg></i>
+            <span>菜单栏</span>
+            <i class="ant-menu-submenu-arrow"></i>
+        </div>
         <ul class="sider-menu-boss"><li class="ant-menu-item"><a href="">菜单1</a></li>
             <li class="ant-menu-item"><a href="">菜单2</a></li>
         </ul>
